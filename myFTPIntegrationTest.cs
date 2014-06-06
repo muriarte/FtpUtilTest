@@ -272,7 +272,7 @@ namespace FTPUtilTest
         }
 
         private myFTP PreparaConexion() {
-            return new myFTP("localhost", "", "", "/");
+            return new myFTP("localhost", "test", "test", "/");
         }
 
         /// <summary>
