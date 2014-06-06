@@ -53,7 +53,7 @@
     <Compile Include="FakeDateTimeProvider.cs" />
     <Compile Include="myFTPFileInfoTest.cs" />
     <Compile Include="myFTPTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="myFTPIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,12 @@
       <Project>{8aea853c-61c5-4928-bf67-41743d176bf8}</Project>
       <Name>FTPUtil</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tools\ftpdmin.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tools\runftpserver.bat" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
