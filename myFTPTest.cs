@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FtpUtil;
 
 
-namespace IntegraSyncTest
+namespace FTPUtilTest
 {
     [TestClass]
     public class myFTPTest
