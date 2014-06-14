@@ -198,7 +198,7 @@ namespace FTPUtilTest
             Assert.AreEqual(1, list.Count, "La lista de archivos no tiene los elementos esperados");
             Assert.IsTrue(list[0].IsFolder, "El archivo listado no es un folder");
 
-            bool ret = ftp.RemoveFolder(FOLDERNAME1);
+            bool ret = ftp.DeleteFolder(FOLDERNAME1);
             Assert.IsTrue(ret, "Hubo problemas al intentar eliminar el folder");
 
             list = ftp.GetFileListDetailed(FOLDERNAME1);
@@ -298,7 +298,7 @@ namespace FTPUtilTest
                             ret = ftp.DeleteFile(fileName);
                         }
                         else {
-                            ret = ftp.RemoveFolder(fileName);
+                            ret = ftp.DeleteFolder(fileName);
                         }
                         if (!ret) return false;
                     }
@@ -313,7 +313,7 @@ namespace FTPUtilTest
                     //Regresamos al folder raiz para eliminar la carpeta de prueba
                     ret = ftp.ChangeFolder("/");
                     if (!ret) return false;
-                    ret = ftp.RemoveFolder(_testFolder);
+                    ret = ftp.DeleteFolder(_testFolder);
                     if (!ret) return false;
                 }
                 else {
