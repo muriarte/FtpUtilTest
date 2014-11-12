@@ -103,11 +103,11 @@ namespace FTPUtilTest
         }
 
         [TestMethod]
-        public void GetFile() {
+        public void GetFile(bool binaryMode) {
             myFTP ftp = PreparaTest();
             var tempFileName = System.IO.Path.GetTempFileName();
 
-            var boolRet = ftp.GetFile(FILENAME3, tempFileName);
+            var boolRet = ftp.GetFile(FILENAME3, tempFileName, binaryMode);
             Assert.IsTrue(boolRet, "Falló al copiar archivo remoto a archivo local");
 
             var content = System.IO.File.ReadAllText(tempFileName);
@@ -170,11 +170,11 @@ namespace FTPUtilTest
         }
 
         [TestMethod]
-        public void GetFileString() {
+        public void GetFileString(bool binaryMode) {
             myFTP ftp = PreparaTest();
             var tempFileName = System.IO.Path.GetTempFileName();
 
-            string ret = ftp.GetFileString(FILENAME1);
+            string ret = ftp.GetFileString(FILENAME1, binaryMode);
             Assert.AreEqual(FILECONTENT1, ret, "Hubo diferencia en el contenido del archivo 1");
         }
 
@@ -239,7 +239,7 @@ namespace FTPUtilTest
             Assert.AreEqual(1, list.Count, "La lista de archivos no tiene los elementos esperados");
             Assert.IsFalse(list[0].IsFolder, "El archivo listado es un folder en vez de un archivo");
 
-            string contenido = ftp.GetFileString("X" + FILENAME1);
+            string contenido = ftp.GetFileString("X" + FILENAME1, true);
             Assert.AreEqual(contenidoDePrueba, contenido, "El contenido del archivo no concuerda");
 
         }
@@ -254,7 +254,7 @@ namespace FTPUtilTest
             var boolRet = ftp.UploadFile(tempFileName, "X" + FILENAME3);
             Assert.IsTrue(boolRet, "Falló al copiar archivo remoto a archivo local");
 
-            string content = ftp.GetFileString("X" + FILENAME3);
+            string content = ftp.GetFileString("X" + FILENAME3, true);
             Assert.AreEqual(contenidoDePrueba, content, "No concuerda el contenido del archivo");
 
             System.IO.File.Delete(tempFileName);
